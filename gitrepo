@@ -1,0 +1,14 @@
+# Initialize git (if not already done)
+git init
+
+# Add all files
+git add .
+
+# Commit changes
+git commit -m "Initial commit"
+
+# Add your remote (replace <sklein767> and <bartendingcalculator> with your GitHub username and repo name)
+git remote add origin https://github.com/<sklein767>/<bartendingcalculator>.git
+
+# Push to GitHub (use 'main' branch, or 'master' if your repo uses that)
+git push -u origin main
