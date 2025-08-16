@@ -1,0 +1,3103 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mobile Bartending Event Calculator</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gradient-to-br from-amber-100 via-stone-200 to-neutral-300 min-h-screen p-4">
+
+    <div class="max-w-4xl mx-auto">
+
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+
+            <!-- Header -->
+
+            <div class="relative bg-gradient-to-r from-rose-400 via-pink-300 to-purple-400 p-8 text-white overflow-hidden">
+
+                <!-- Beautiful gradient backdrop -->
+
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-200 via-pink-100 to-orange-100 opacity-30"></div>
+
+                
+
+                <!-- Content overlay -->
+
+                <div class="relative z-10 text-center">
+
+                    <h1 class="text-4xl font-bold text-white drop-shadow-lg">🍸 Mobile Bartending Calculator</h1>
+
+                    <p class="text-center mt-3 text-white drop-shadow-md text-lg opacity-95">Calculate costs, bottles needed, and staffing for your perfect event</p>
+
+                    <div class="mt-2 text-white/80 text-sm">✨ Making your special day unforgettable ✨</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="p-6 grid md:grid-cols-2 gap-8">
+
+                <!-- Input Section -->
+
+                <div class="space-y-6">
+
+                    <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-amber-200 pb-2">Event Details</h2>
+
+                    
+
+                    <!-- Basic Event Info -->
+
+                    <div class="bg-gray-50 p-4 rounded-lg space-y-4">
+
+                        <div>
+
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Number of Guests</label>
+
+                            <input type="number" id="guests" value="50" min="1" max="500" 
+
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+
+                        </div>
+
+                        
+
+                        <div>
+
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Event Duration (hours)</label>
+
+                            <input type="number" id="duration" value="4" min="1" max="12" step="0.5"
+
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+
+                        </div>
+
+                        
+
+                        <div>
+
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Event Type</label>
+
+                            <select id="eventType" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+
+                                <option value="promotional">Promotional Event</option>
+
+                                <option value="wedding">Wedding</option>
+
+                                <option value="corporate">Corporate Event</option>
+
+                                <option value="birthday">Birthday Party</option>
+
+                                <option value="club">Club Scene</option>
+
+                                <option value="fair">Fair/Festival</option>
+
+                                <option value="custom">Other (specify below)</option>
+
+                            </select>
+
+                        </div>
+
+                        
+
+                        <div id="customEventType" class="hidden">
+
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Specify Event Type</label>
+
+                            <input type="text" id="customEventInput" placeholder="Enter your event type..."
+
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Bar Package Selection -->
+
+                    <div class="bg-gray-50 p-4 rounded-lg space-y-4">
+
+                        <h3 class="font-semibold text-gray-800">Bar Package</h3>
+
+                        
+
+                        <div class="space-y-3">
+
+                            <label class="flex items-center">
+
+                                <input type="radio" name="barPackage" id="fullBar" value="fullBar" checked class="mr-2 text-amber-600">
+
+                                <span class="text-sm font-medium">Full Bar</span>
+
+                            </label>
+
+                            <label class="flex items-center">
+
+                                <input type="radio" name="barPackage" id="threeCocktails" value="threeCocktails" class="mr-2 text-amber-600">
+
+                                <span class="text-sm font-medium">3 Signature Cocktails</span>
+
+                            </label>
+
+                            <label class="flex items-center">
+
+                                <input type="radio" name="barPackage" id="mimosaBar" value="mimosaBar" class="mr-2 text-amber-600">
+
+                                <span class="text-sm font-medium">Mimosa Bar</span>
+
+                            </label>
+
+                            <label class="flex items-center">
+
+                                <input type="radio" name="barPackage" id="wineAndBeer" value="wineAndBeer" class="mr-2 text-amber-600">
+
+                                <span class="text-sm font-medium">Wine & Beer Package</span>
+
+                            </label>
+
+                            <label class="flex items-center">
+
+                                <input type="radio" name="barPackage" id="nonAlcoholic" value="nonAlcoholic" class="mr-2 text-amber-600">
+
+                                <span class="text-sm font-medium">Non-Alcoholic Bar</span>
+
+                            </label>
+
+
+
+                            <label class="flex items-center">
+
+                                <input type="radio" name="barPackage" id="bartenderMixersJuices" value="bartenderMixersJuices" class="mr-2 text-amber-600">
+
+                                <span class="text-sm font-medium">Bartender, Mixers & Juices Package</span>
+
+                            </label>
+
+                            <label class="flex items-center">
+
+                                <input type="radio" name="barPackage" id="signatureHouse" value="signatureHouse" class="mr-2 text-amber-600">
+
+                                <span class="text-sm font-medium">Signature House Cocktails Package</span>
+
+                            </label>
+
+                            <label class="flex items-center">
+
+                                <input type="radio" name="barPackage" id="thirtyHourBartender" value="thirtyHourBartender" class="mr-2 text-amber-600">
+
+                                <span class="text-sm font-medium">$30 hr Bartender Package</span>
+
+                            </label>
+
+                            <label class="flex items-center">
+
+                                <input type="radio" name="barPackage" id="cashBar" value="cashBar" class="mr-2 text-amber-600">
+
+                                <span class="text-sm font-medium">Cash Bar Package</span>
+
+                            </label>
+
+                        </div>
+
+                        
+
+                        <!-- Package Description -->
+
+                        <div id="packageDescription" class="mt-4 p-3 bg-blue-50 rounded border border-blue-200">
+
+                            <h4 class="font-medium text-blue-800 mb-2">Package Includes:</h4>
+
+                            <div id="packageDetails" class="text-sm text-blue-700">
+
+                                <!-- Package details will be populated here -->
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <!-- Cocktail Selection (shown when 3 cocktails is selected) -->
+
+                        <div id="cocktailSelection" class="hidden mt-4 p-3 bg-white rounded border">
+
+                            <h4 class="font-medium text-gray-700 mb-3">Select exactly 3 cocktails:</h4>
+
+                            <div class="grid grid-cols-1 gap-2 max-h-48 overflow-y-auto">
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="oldFashioned">
+
+                                    Old Fashioned
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="whiskeySour">
+
+                                    Whiskey Sour
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="newYorkSour">
+
+                                    New York Sour
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="manhattan">
+
+                                    Manhattan
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="mintJulep">
+
+                                    Mint Julep
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="paloma">
+
+                                    Paloma
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="tequilaSunrise">
+
+                                    Tequila Sunrise
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="tequilaSour">
+
+                                    Tequila Sour
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="cosmopolitan">
+
+                                    Cosmopolitan
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="moscowMule">
+
+                                    Moscow Mule
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="blackRussian">
+
+                                    Black Russian
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="longIslandIcedTea">
+
+                                    Long Island Iced Tea
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="bloodyMary">
+
+                                    Bloody Mary
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="screwdriver">
+
+                                    Screwdriver
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="negroni">
+
+                                    Negroni
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="gimlet">
+
+                                    Gimlet
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="tomCollins">
+
+                                    Tom Collins
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="ramosGinFizz">
+
+                                    Ramos Gin Fizz
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="whiteLady">
+
+                                    White Lady
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="ginTonic">
+
+                                    Gin & Tonic
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="mojito">
+
+                                    Mojito
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="daiquiri">
+
+                                    Daiquiri
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="darkNStormy">
+
+                                    Dark 'N' Stormy
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="pinaColada">
+
+                                    Piña Colada
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="maiTai">
+
+                                    Mai Tai
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="hurricane">
+
+                                    Hurricane
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="french75">
+
+                                    French 75
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="mimosa">
+
+                                    Mimosa
+
+                                </label>
+
+                                <label class="flex items-center text-sm">
+
+                                    <input type="checkbox" class="cocktail-choice mr-2" value="kirRoyale">
+
+                                    Kir Royale
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <!-- Mimosa Bar Options -->
+
+                        <div id="mimosaOptions" class="hidden mt-4 p-3 bg-white rounded border">
+
+                            <h4 class="font-medium text-gray-700 mb-3">Mimosa Flavors Included:</h4>
+
+                            <div class="text-sm text-gray-600 space-y-1">
+
+                                <div>🍓 Strawberry Flavoring</div>
+
+                                <div>🍑 Peach Flavoring</div>
+
+                                <div>🍬 Bubblegum Flavoring</div>
+
+                                <div>🍊 Classic Orange</div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Add-ons -->
+
+                    <div class="bg-gray-50 p-4 rounded-lg space-y-4">
+
+                        <h3 class="font-semibold text-gray-800">Add-ons & Extras</h3>
+
+                        
+
+                        <label class="flex items-center justify-between">
+
+                            <span class="text-sm">Champagne Service</span>
+
+                            <input type="checkbox" id="champagne" class="text-amber-600">
+
+                        </label>
+
+                        
+
+                        <label class="flex items-center justify-between">
+
+                            <span class="text-sm">Premium Bar Setup</span>
+
+                            <input type="checkbox" id="premiumSetup" class="text-amber-600">
+
+                        </label>
+
+                        
+
+                        <label class="flex items-center justify-between">
+
+                            <span class="text-sm">Coffee Table</span>
+
+                            <input type="checkbox" id="coffeeTable" class="text-amber-600">
+
+                        </label>
+
+                        
+
+                        <label class="flex items-center justify-between">
+
+                            <span class="text-sm">Water & Lemonade Refreshments (recommended)</span>
+
+                            <input type="checkbox" id="refreshmentsTable" class="text-amber-600">
+
+                        </label>
+
+                        
+
+                        <label class="flex items-center justify-between">
+
+                            <span class="text-sm">Mixers & Juices Package</span>
+
+                            <input type="checkbox" id="mixersJuicesPackage" class="text-amber-600">
+
+                        </label>
+
+                        
+
+                        <label class="flex items-center justify-between">
+
+                            <span class="text-sm">Sodas & Juices Add-on (recommended)</span>
+
+                            <input type="checkbox" id="sodasJuicesAddon" class="text-amber-600">
+
+                        </label>
+
+                        
+
+                        <label class="flex items-center justify-between">
+
+                            <span class="text-sm">Mimosa Bar Table</span>
+
+                            <input type="checkbox" id="mimosaBarTable" class="text-amber-600">
+
+                        </label>
+
+                        
+
+                        <label class="flex items-center justify-between">
+
+                            <span class="text-sm">Ice Package</span>
+
+                            <input type="checkbox" id="icePackage" class="text-amber-600">
+
+                        </label>
+
+                        
+
+                        <label class="flex items-center justify-between">
+
+                            <span class="text-sm">Dry Ice Package</span>
+
+                            <input type="checkbox" id="dryIcePackage" class="text-amber-600">
+
+                        </label>
+
+                        
+
+                        <div>
+
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Extra Bartenders</label>
+
+                            <input type="number" id="extraBartenders" value="0" min="0" max="5"
+
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+
+                            <p class="text-xs text-gray-500 mt-1">Per extra bartender per hour</p>
+
+                        </div>
+
+                        
+
+                        <div>
+
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Cooler Rentals</label>
+
+                            <input type="number" id="coolerRentals" value="0" min="0" max="10"
+
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+
+                            <p class="text-xs text-gray-500 mt-1">$25 per cooler for beverage storage</p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="w-full bg-gradient-to-r from-green-400 via-emerald-300 to-teal-400 text-white font-bold py-3 px-6 rounded-lg text-center">
+
+                        ✨ Calculations Update Automatically ✨
+
+                    </div>
+
+
+
+                    <!-- Pricing Sheet Button -->
+
+                    <div class="bg-gray-50 p-4 rounded-lg space-y-3">
+
+                        <button id="showPricingSheet" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
+
+                            📋 View Complete Pricing Sheet
+
+                        </button>
+
+                        <button id="showFormulaPage" class="w-full bg-gradient-to-r from-green-500 to-teal-600 text-white font-bold py-3 px-6 rounded-lg hover:from-green-600 hover:to-teal-700 transition-all duration-300">
+
+                            🧮 View Formulas & Calculations
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Results Section -->
+
+                <div class="space-y-6">
+
+                    <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-amber-200 pb-2">Cost Breakdown</h2>
+
+                    
+
+                    <div id="results" class="space-y-4">
+
+                        <!-- Results will be populated here -->
+
+                        <div class="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-lg border border-green-200">
+
+                            <p class="text-center text-gray-600">Cost breakdown will appear here automatically</p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Shopping List Calculator -->
+
+                    <div class="bg-gray-50 p-4 rounded-lg">
+
+                        <h3 class="font-semibold text-gray-800 mb-4">🛒 Complete Shopping List & Costs</h3>
+
+                        <div id="bottleBreakdown" class="space-y-2 text-sm">
+
+                            <p class="text-gray-600">Shopping list updates automatically as you make selections</p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Staffing Recommendations -->
+
+                    <div class="bg-gray-50 p-4 rounded-lg">
+
+                        <h3 class="font-semibold text-gray-800 mb-4">👥 Staffing Recommendations</h3>
+
+                        <div id="staffingInfo" class="space-y-2 text-sm">
+
+                            <p class="text-gray-600">Staffing recommendations update automatically</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Formula Page Modal -->
+
+    <div id="formulaModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+
+        <div class="bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+
+            <div class="bg-gradient-to-r from-green-500 to-teal-600 text-white p-6 rounded-t-2xl">
+
+                <div class="flex justify-between items-center">
+
+                    <h2 class="text-2xl font-bold">🧮 Formulas & Calculation Rules</h2>
+
+                    <button id="closeFormulaModal" class="text-white hover:text-gray-200 text-2xl font-bold">&times;</button>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="p-6 space-y-8">
+
+                <!-- Core Calculation Rules -->
+
+                <div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 border-b-2 border-green-200 pb-2">📊 Core Calculation Rules</h3>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+
+                        <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+
+                            <h4 class="font-semibold text-green-700 mb-3">🍸 Drink Consumption Formula</h4>
+
+                            <div class="space-y-2 text-sm">
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>Total Drinks = Guests × (Duration + 1)</strong>
+
+                                </div>
+
+                                <div class="text-gray-600">
+
+                                    • Each person drinks 1 drink per hour<br>
+
+                                    • Plus 1 extra drink in the first hour<br>
+
+                                    • Example: 50 guests × (4 hours + 1) = 250 total drinks
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+
+                            <h4 class="font-semibold text-green-700 mb-3">👥 Staffing Formula</h4>
+
+                            <div class="space-y-2 text-sm">
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>Bartenders = ceil(Guests ÷ 50)</strong>
+
+                                </div>
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>+1 for every 2 hours over 4</strong>
+
+                                </div>
+
+                                <div class="text-gray-600">
+
+                                    • 1 bartender per 50 guests (first 4 hours)<br>
+
+                                    • Additional bartender for longer events<br>
+
+                                    • Minimum: 1 bartender per 75 guests
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+
+                            <h4 class="font-semibold text-green-700 mb-3">🧊 Ice Calculation</h4>
+
+                            <div class="space-y-2 text-sm">
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>Ice = Guests × 2.06 lbs</strong>
+
+                                </div>
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>Cost = Ice lbs × $0.49</strong>
+
+                                </div>
+
+                                <div class="text-gray-600">
+
+                                    • About $2.00 per person<br>
+
+                                    • 2-3 lbs per person recommended<br>
+
+                                    • Base calculation: 330 lbs for 160 guests
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+
+                            <h4 class="font-semibold text-green-700 mb-3">📏 Scaling Formula</h4>
+
+                            <div class="space-y-2 text-sm">
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>Scale Factor = Current Guests ÷ 160</strong>
+
+                                </div>
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>New Quantity = Base Qty × Scale Factor</strong>
+
+                                </div>
+
+                                <div class="text-gray-600">
+
+                                    • All shopping list quantities based on 160 guests<br>
+
+                                    • Rounded up to nearest whole number<br>
+
+                                    • Ensures adequate supplies for any event size
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Drink Distribution Rules -->
+
+                <div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 border-b-2 border-blue-200 pb-2">🍹 Drink Distribution by Package</h3>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+
+                            <h4 class="font-semibold text-blue-700 mb-3">Full Bar Package</h4>
+
+                            <div class="space-y-1 text-sm">
+
+                                <div>• Cocktails: 30% of total drinks</div>
+
+                                <div>• Beer: 30% of total drinks</div>
+
+                                <div>• Wine: 30% of total drinks</div>
+
+                                <div>• Non-Alcoholic: 10% of total drinks</div>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+
+                            <h4 class="font-semibold text-blue-700 mb-3">3 Signature Cocktails</h4>
+
+                            <div class="space-y-1 text-sm">
+
+                                <div>• Cocktails: 85% of total drinks</div>
+
+                                <div>• Non-Alcoholic: 15% of total drinks</div>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+
+                            <h4 class="font-semibold text-blue-700 mb-3">Wine & Beer Package</h4>
+
+                            <div class="space-y-1 text-sm">
+
+                                <div>• Beer: 45% of total drinks</div>
+
+                                <div>• Wine: 40% of total drinks</div>
+
+                                <div>• Non-Alcoholic: 15% of total drinks</div>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+
+                            <h4 class="font-semibold text-blue-700 mb-3">Mimosa Bar</h4>
+
+                            <div class="space-y-1 text-sm">
+
+                                <div>• Mimosas: 80% of total drinks</div>
+
+                                <div>• Non-Alcoholic: 20% of total drinks</div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Pricing Formulas -->
+
+                <div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 border-b-2 border-purple-200 pb-2">💰 Service Pricing Formulas</h3>
+
+                    <div class="space-y-4">
+
+                        <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+
+                            <h4 class="font-semibold text-purple-700 mb-3">Base Service Calculation</h4>
+
+                            <div class="bg-white p-3 rounded border font-mono text-sm">
+
+                                <div><strong>Total Cost = Base Fee + (Hourly Rate × Duration) + Add-ons + Tax</strong></div>
+
+                                <div class="mt-2 text-gray-600">Tax = Subtotal × 0.08 (8%)</div>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="grid md:grid-cols-2 gap-4">
+
+                            <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+
+                                <h4 class="font-semibold text-purple-700 mb-3">Package Base Fees</h4>
+
+                                <div class="space-y-1 text-sm">
+
+                                    <div>• Full Bar: $275 + $75/hr</div>
+
+                                    <div>• 3 Cocktails: $325 + $75/hr</div>
+
+                                    <div>• Mimosa Bar: $350 + $75/hr</div>
+
+                                    <div>• Wine & Beer: $315 + $75/hr</div>
+
+                                    <div>• Non-Alcoholic: $310 + $75/hr</div>
+
+                                    <div>• Mixers & Juices: $295 + $75/hr</div>
+
+                                    <div>• Signature House: $340 + $75/hr</div>
+
+                                    <div>• $30/hr Bartender: $200 + $30/hr</div>
+
+                                    <div>• Cash Bar: $50 (flat fee)</div>
+
+                                </div>
+
+                            </div>
+
+                            
+
+                            <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+
+                                <h4 class="font-semibold text-purple-700 mb-3">Add-on Pricing</h4>
+
+                                <div class="space-y-1 text-sm">
+
+                                    <div>• Extra Bartenders: $100/hr each</div>
+
+                                    <div>• Champagne Service: $150</div>
+
+                                    <div>• Premium Setup: $200</div>
+
+                                    <div>• Coffee Table: $21</div>
+
+                                    <div>• Water & Lemonade: $85</div>
+
+                                    <div>• Mixers & Juices: $95</div>
+
+                                    <div>• Sodas & Juices: $65</div>
+
+                                    <div>• Mimosa Bar Table: $125</div>
+
+                                    <div>• Ice Package: $75</div>
+
+                                    <div>• Dry Ice Package: $150</div>
+
+                                    <div>• Cooler Rentals: $25 each</div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Per Person Cost Breakdowns -->
+
+                <div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 border-b-2 border-orange-200 pb-2">👤 Per Person Cost Examples (50 guests, 4 hours)</h3>
+
+                    <div class="grid md:grid-cols-3 gap-4">
+
+                        <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
+
+                            <h4 class="font-semibold text-orange-700 mb-3">Service Costs</h4>
+
+                            <div class="space-y-1 text-sm">
+
+                                <div>• Full Bar: $10.30/person</div>
+
+                                <div>• 3 Cocktails: $12.30/person</div>
+
+                                <div>• Mimosa Bar: $13.30/person</div>
+
+                                <div>• Wine & Beer: $11.90/person</div>
+
+                                <div>• Cash Bar: $1.00/person</div>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
+
+                            <h4 class="font-semibold text-orange-700 mb-3">Add-on Costs</h4>
+
+                            <div class="space-y-1 text-sm">
+
+                                <div>• Ice: $2.00/person</div>
+
+                                <div>• Champagne: $3.00/person</div>
+
+                                <div>• Premium Setup: $4.00/person</div>
+
+                                <div>• Dry Ice: $3.00/person</div>
+
+                                <div>• Extra Bartender: $8.00/person</div>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
+
+                            <h4 class="font-semibold text-orange-700 mb-3">Supply Costs</h4>
+
+                            <div class="space-y-1 text-sm">
+
+                                <div>• Coffee Table: $0.42/person</div>
+
+                                <div>• Water & Lemonade: $1.70/person</div>
+
+                                <div>• Mixers & Juices: $1.90/person</div>
+
+                                <div>• Sodas & Juices: $1.30/person</div>
+
+                                <div>• Mimosa Table: $2.50/person</div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Shopping List Calculation Rules -->
+
+                <div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 border-b-2 border-red-200 pb-2">🛒 Shopping List Calculation Rules</h3>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+
+                        <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+
+                            <h4 class="font-semibold text-red-700 mb-3">Alcohol Quantities (per 160 guests)</h4>
+
+                            <div class="space-y-2 text-sm">
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>Spirits:</strong> 3 bottles Vodka (1.75L), 2 bottles Gin (1.75L), 3 bottles Whiskey (1.75L), 3 bottles Tequila (1.75L), 2 bottles Rum (1.75L)
+
+                                </div>
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>Wine:</strong> 12 bottles White Wine, 7 bottles Red Wine
+
+                                </div>
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>Beer:</strong> 2 cases Bud Light, 2 cases Heineken, 3 cases IPA
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+
+                            <h4 class="font-semibold text-red-700 mb-3">Supply Quantities (per 160 guests)</h4>
+
+                            <div class="space-y-2 text-sm">
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>Ice:</strong> 330 lbs ($161.70 total)
+
+                                </div>
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>Cups:</strong> 8 packs of 100ct ($127.92 total)
+
+                                </div>
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>Garnishes:</strong> 40 limes, 6 lemons, 6 oranges
+
+                                </div>
+
+                                <div class="bg-white p-2 rounded border">
+
+                                    <strong>Mixers:</strong> 5 bottles each major mixer type
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Cost Calculation Examples -->
+
+                <div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 border-b-2 border-teal-200 pb-2">🧮 Example Calculations</h3>
+
+                    <div class="bg-teal-50 p-6 rounded-lg border border-teal-200">
+
+                        <h4 class="font-semibold text-teal-700 mb-4">Full Bar Package - 50 guests, 4 hours</h4>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+
+                            <div class="space-y-2 text-sm font-mono">
+
+                                <div class="bg-white p-2 rounded border">Base Service Fee: $275</div>
+
+                                <div class="bg-white p-2 rounded border">Bartender Cost: $75 × 4 = $300</div>
+
+                                <div class="bg-white p-2 rounded border">Ice Package: $75</div>
+
+                                <div class="bg-white p-2 rounded border">Subtotal: $275 + $300 + $75 = $650</div>
+
+                                <div class="bg-white p-2 rounded border">Tax (8%): $650 × 0.08 = $52</div>
+
+                                <div class="bg-white p-2 rounded border font-bold">Total: $702</div>
+
+                            </div>
+
+                            <div class="space-y-2 text-sm">
+
+                                <div class="bg-white p-2 rounded border">Per Person: $702 ÷ 50 = $14.04</div>
+
+                                <div class="bg-white p-2 rounded border">Total Drinks: 50 × (4+1) = 250</div>
+
+                                <div class="bg-white p-2 rounded border">Cocktails: 250 × 30% = 75</div>
+
+                                <div class="bg-white p-2 rounded border">Beer: 250 × 30% = 75</div>
+
+                                <div class="bg-white p-2 rounded border">Wine: 250 × 30% = 75</div>
+
+                                <div class="bg-white p-2 rounded border">Non-Alcoholic: 250 × 10% = 25</div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Important Notes -->
+
+                <div class="bg-gray-50 p-4 rounded-lg border-2 border-gray-200">
+
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">📝 Important Calculation Notes</h3>
+
+                    <ul class="text-sm text-gray-700 space-y-2">
+
+                        <li>• All quantities are rounded UP to ensure adequate supplies</li>
+
+                        <li>• Shopping list based on 160-guest baseline, scaled proportionally</li>
+
+                        <li>• 8% tax applied to all bartending services</li>
+
+                        <li>• 9.5% sales tax applies to client alcohol purchases</li>
+
+                        <li>• Minimum 2-hour booking required for all packages</li>
+
+                        <li>• Cash Bar Package: Bartender provides and sells drinks directly</li>
+
+                        <li>• Extra bartenders recommended for events over 50 guests</li>
+
+                        <li>• Ice calculation includes extra for chilling and dilution</li>
+
+                        <li>• Cotton candy syrup: $5 per 16oz bottle (added to shopping list)</li>
+
+                        <li>• Cooler rentals: $25 per cooler for beverage storage</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Pricing Sheet Modal -->
+
+    <div id="pricingModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-t-2xl">
+
+                <div class="flex justify-between items-center">
+
+                    <h2 class="text-2xl font-bold">📋 Complete Pricing Sheet</h2>
+
+                    <button id="closePricingModal" class="text-white hover:text-gray-200 text-2xl font-bold">&times;</button>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="p-6 space-y-6">
+
+                <!-- Bar Packages -->
+
+                <div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 border-b-2 border-blue-200 pb-2">🍸 Bar Packages</h3>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-blue-700 mb-2">Full Bar Package</h4>
+
+                            <p class="text-sm text-gray-600 mb-2">A bartender, bartending tools, bar table, and a shopping list for client of alcohol and necessities.</p>
+
+                            <div class="text-lg font-bold text-green-600">Base: $275 + $75/hr</div>
+
+                            <div class="text-xs text-blue-600 mt-1">Per person (50 guests, 4hrs): $10.30</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-blue-700 mb-2">3 Signature Cocktails</h4>
+
+                            <p class="text-sm text-gray-600 mb-2">3 signature cocktails of your choice, bar table, bar tools, and a client shopping list for alcohol and necessities.</p>
+
+                            <div class="text-lg font-bold text-green-600">Base: $325 + $75/hr</div>
+
+                            <div class="text-xs text-blue-600 mt-1">Per person (50 guests, 4hrs): $12.30</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-blue-700 mb-2">Mimosa Bar</h4>
+
+                            <p class="text-sm text-gray-600 mb-2">3 types of mimosas, bar table, bar tools, and a client shopping list for sparkling wine, 3 flavors, and garnishes.</p>
+
+                            <div class="text-lg font-bold text-green-600">Base: $350 + $75/hr</div>
+
+                            <div class="text-xs text-blue-600 mt-1">Per person (50 guests, 4hrs): $13.30</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-blue-700 mb-2">Wine & Beer Package</h4>
+
+                            <p class="text-sm text-gray-600 mb-2">A bartender, bar table, bar tools, 2-3 types of beer and 2-4 types of wine, and a client shopping list.</p>
+
+                            <div class="text-lg font-bold text-green-600">Base: $315 + $75/hr</div>
+
+                            <div class="text-xs text-blue-600 mt-1">Per person (50 guests, 4hrs): $11.90</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-blue-700 mb-2">Non-Alcoholic Bar</h4>
+
+                            <p class="text-sm text-gray-600 mb-2">A bartender, bar table, bar tools, cream sodas, regular sodas and juices, and juice-soda mixed drinks.</p>
+
+                            <div class="text-lg font-bold text-green-600">Base: $310 + $75/hr</div>
+
+                            <div class="text-xs text-blue-600 mt-1">Per person (50 guests, 4hrs): $11.70</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-blue-700 mb-2">Bartender, Mixers & Juices</h4>
+
+                            <p class="text-sm text-gray-600 mb-2">A bartender, bar table, bar tools, juices, sodas, napkins, cups, straws, garnishes.</p>
+
+                            <div class="text-lg font-bold text-green-600">Base: $295 + $75/hr</div>
+
+                            <div class="text-xs text-blue-600 mt-1">Per person (50 guests, 4hrs): $11.10</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-blue-700 mb-2">Signature House Cocktails</h4>
+
+                            <p class="text-sm text-gray-600 mb-2">A bartender, bar table, bar tools, curating between 2-5 of their favorite cocktails.</p>
+
+                            <div class="text-lg font-bold text-green-600">Base: $340 + $75/hr</div>
+
+                            <div class="text-xs text-blue-600 mt-1">Per person (50 guests, 4hrs): $12.90</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-blue-700 mb-2">$30/hr Bartender Package</h4>
+
+                            <p class="text-sm text-gray-600 mb-2">A bartender and service, bartending tools, and a bar table.</p>
+
+                            <div class="text-lg font-bold text-green-600">Base: $200 + $30/hr</div>
+
+                            <div class="text-xs text-blue-600 mt-1">Per person (50 guests, 4hrs): $6.40</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-blue-700 mb-2">Cash Bar Package</h4>
+
+                            <p class="text-sm text-gray-600 mb-2">A bartender, our selection of cocktails and non-alcohol beverages to sell to guests. You pay $50 for the service only.</p>
+
+                            <div class="text-lg font-bold text-green-600">Base: $50 (flat fee)</div>
+
+                            <div class="text-xs text-blue-600 mt-1">Per person (50 guests): $1.00</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Add-ons & Extras -->
+
+                <div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 border-b-2 border-purple-200 pb-2">✨ Add-ons & Extras</h3>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-purple-700 mb-2">Champagne Service</h4>
+
+                            <div class="text-lg font-bold text-green-600">$150</div>
+
+                            <div class="text-xs text-purple-600 mt-1">Per person (50 guests): $3.00</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-purple-700 mb-2">Premium Bar Setup</h4>
+
+                            <div class="text-lg font-bold text-green-600">$200</div>
+
+                            <div class="text-xs text-purple-600 mt-1">Per person (50 guests): $4.00</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-purple-700 mb-2">Coffee Table</h4>
+
+                            <p class="text-sm text-gray-600 mb-2">Coffee ($9) + Creamer ($7) + Sugar ($5)</p>
+
+                            <div class="text-lg font-bold text-green-600">$21</div>
+
+                            <div class="text-xs text-purple-600 mt-1">Per person (50 guests): $0.42</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-purple-700 mb-2">Water & Lemonade Refreshments</h4>
+
+                            <div class="text-lg font-bold text-green-600">$85</div>
+
+                            <div class="text-xs text-purple-600 mt-1">Per person (50 guests): $1.70</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-purple-700 mb-2">Mixers & Juices Package</h4>
+
+                            <div class="text-lg font-bold text-green-600">$95</div>
+
+                            <div class="text-xs text-purple-600 mt-1">Per person (50 guests): $1.90</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-purple-700 mb-2">Sodas & Juices Add-on</h4>
+
+                            <div class="text-lg font-bold text-green-600">$65</div>
+
+                            <div class="text-xs text-purple-600 mt-1">Per person (50 guests): $1.30</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-purple-700 mb-2">Mimosa Bar Table</h4>
+
+                            <div class="text-lg font-bold text-green-600">$125</div>
+
+                            <div class="text-xs text-purple-600 mt-1">Per person (50 guests): $2.50</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-purple-700 mb-2">Ice Package</h4>
+
+                            <div class="text-lg font-bold text-green-600">$75</div>
+
+                            <div class="text-xs text-purple-600 mt-1">Per person (50 guests): $1.50</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-purple-700 mb-2">Dry Ice Package</h4>
+
+                            <div class="text-lg font-bold text-green-600">$150</div>
+
+                            <div class="text-xs text-purple-600 mt-1">Per person (50 guests): $3.00</div>
+
+                        </div>
+
+                        
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+
+                            <h4 class="font-semibold text-purple-700 mb-2">Extra Bartenders</h4>
+
+                            <div class="text-lg font-bold text-green-600">$100/hr each</div>
+
+                            <div class="text-xs text-purple-600 mt-1">Per person (50 guests, 4hrs): $8.00</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+                <!-- Additional Information -->
+
+                <div class="bg-blue-50 p-4 rounded-lg border-2 border-blue-200">
+
+                    <h3 class="text-lg font-bold text-blue-800 mb-3">📝 Important Notes</h3>
+
+                    <ul class="text-sm text-blue-700 space-y-2">
+
+                        <li>• All packages include bar table and bar tools</li>
+
+                        <li>• Base service fee applies to all packages</li>
+
+                        <li>• Hourly rates apply for duration of event</li>
+
+                        <li>• 8% tax added to all services</li>
+
+                        <li>• Shopping lists provided for client alcohol purchases</li>
+
+                        <li>• Minimum 2-hour booking required</li>
+
+                        <li>• Travel fees may apply for locations over 25 miles</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        // Package descriptions
+
+        const packageDescriptions = {
+
+            'fullBar': 'A bartender, bartending tools, bar table, and a shopping list for client of alcohol and necessities.',
+
+            'threeCocktails': '3 signature cocktails of your choice, bar table, bar tools, and a client shopping list for alcohol and necessities.',
+
+            'mimosaBar': '3 types of mimosas, bar table, bar tools, and a client shopping list for sparkling wine, 3 flavors, and garnishes.',
+
+            'wineAndBeer': 'A bartender, bar table, bar tools, 2-3 types of beer and 2-4 types of wine, and a client shopping list.',
+
+            'nonAlcoholic': 'A bartender, bar table, bar tools, cream sodas, regular sodas and juices, and juice-soda mixed drinks.',
+
+            'bartenderMixersJuices': 'A bartender, bar table, bar tools, juices, sodas, napkins, cups, straws, garnishes.',
+
+            'signatureHouse': 'A bartender, bar table, bar tools, curating between 2-5 of their favorite cocktails.',
+
+            'thirtyHourBartender': 'A bartender and service, bartending tools, and a bar table.',
+
+            'cashBar': 'A bartender, our selection of cocktails and non-alcohol beverages to sell to guests. You pay $50 for the service only.'
+
+        };
+
+
+
+        function updatePackageDescription() {
+
+            const selectedPackage = document.querySelector('input[name="barPackage"]:checked').value;
+
+            const descriptionDiv = document.getElementById('packageDetails');
+
+            descriptionDiv.textContent = packageDescriptions[selectedPackage];
+
+        }
+
+
+
+        function calculateEvent() {
+
+            // Get input values
+
+            const guests = parseInt(document.getElementById('guests').value) || 0;
+
+            const duration = parseFloat(document.getElementById('duration').value) || 0;
+
+            const eventType = document.getElementById('eventType').value;
+
+            
+
+            // Get bar package selection
+
+            const barPackage = document.querySelector('input[name="barPackage"]:checked').value;
+
+            
+
+            // Get add-ons
+
+            const champagne = document.getElementById('champagne').checked;
+
+            const premiumSetup = document.getElementById('premiumSetup').checked;
+
+            const coffeeTable = document.getElementById('coffeeTable').checked;
+
+            const refreshmentsTable = document.getElementById('refreshmentsTable').checked;
+
+            const mixersJuicesPackage = document.getElementById('mixersJuicesPackage').checked;
+
+            const sodasJuicesAddon = document.getElementById('sodasJuicesAddon').checked;
+
+            const mimosaBarTable = document.getElementById('mimosaBarTable').checked;
+
+            const icePackage = document.getElementById('icePackage').checked;
+
+            const dryIcePackage = document.getElementById('dryIcePackage').checked;
+
+            const coolerRentals = parseInt(document.getElementById('coolerRentals').value) || 0;
+
+            const extraBartenders = parseInt(document.getElementById('extraBartenders').value) || 0;
+
+            
+
+            // Base pricing
+
+            let baseBartenderRate = 75; // per hour
+
+            let baseServiceFee = 200;
+
+            
+
+            const extraBartenderCost = extraBartenders * 100 * duration;
+
+            const champagneCost = champagne ? 150 : 0;
+
+            const premiumSetupCost = premiumSetup ? 200 : 0;
+
+            const coffeeTableCost = coffeeTable ? 21 : 0;
+
+            const refreshmentsTableCost = refreshmentsTable ? 85 : 0;
+
+            const mixersJuicesPackageCost = mixersJuicesPackage ? 95 : 0;
+
+            const sodasJuicesAddonCost = sodasJuicesAddon ? 65 : 0;
+
+            const mimosaBarTableCost = mimosaBarTable ? 125 : 0;
+
+            const icePackageCost = icePackage ? 75 : 0;
+
+            const dryIcePackageCost = dryIcePackage ? 150 : 0;
+
+            const coolerRentalCost = coolerRentals * 25;
+
+            
+
+            // Bar package costs (base fees above standard)
+
+            let barPackageCost = 0;
+
+            let packageBaseRate = 75; // Standard hourly rate
+
+            
+
+            // Adjust base service fee and hourly rate based on package
+
+            if (barPackage === 'fullBar') {
+
+                baseServiceFee = 275;
+
+                packageBaseRate = 75;
+
+            } else if (barPackage === 'threeCocktails') {
+
+                baseServiceFee = 325;
+
+                packageBaseRate = 75;
+
+            } else if (barPackage === 'mimosaBar') {
+
+                baseServiceFee = 350;
+
+                packageBaseRate = 75;
+
+            } else if (barPackage === 'wineAndBeer') {
+
+                baseServiceFee = 315;
+
+                packageBaseRate = 75;
+
+            } else if (barPackage === 'nonAlcoholic') {
+
+                baseServiceFee = 310;
+
+                packageBaseRate = 75;
+
+            } else if (barPackage === 'bartenderMixersJuices') {
+
+                baseServiceFee = 295;
+
+                packageBaseRate = 75;
+
+            } else if (barPackage === 'signatureHouse') {
+
+                baseServiceFee = 340;
+
+                packageBaseRate = 75;
+
+            } else if (barPackage === 'thirtyHourBartender') {
+
+                baseServiceFee = 200;
+
+                packageBaseRate = 30;
+
+            } else if (barPackage === 'cashBar') {
+
+                baseServiceFee = 50;
+
+                packageBaseRate = 0; // No hourly rate for cash bar
+
+            }
+
+            
+
+            // Recalculate bartender cost with correct rate
+
+            const bartenderCost = packageBaseRate * duration;
+
+            
+
+            const subtotal = baseServiceFee + bartenderCost + extraBartenderCost + champagneCost + premiumSetupCost + coffeeTableCost + refreshmentsTableCost + mixersJuicesPackageCost + sodasJuicesAddonCost + mimosaBarTableCost + icePackageCost + dryIcePackageCost + coolerRentalCost + barPackageCost;
+
+            const tax = subtotal * 0.08; // 8% tax
+
+            const total = subtotal + tax;
+
+
+
+            // Calculate bottles needed
+
+            const bottleCalc = calculateBottles(guests, duration, barPackage);
+
+            
+
+            // Calculate staffing
+
+            const staffing = calculateStaffing(guests, duration);
+
+
+
+            // Display results
+
+            displayResults(subtotal, tax, total, baseServiceFee, bartenderCost, extraBartenderCost, champagneCost, premiumSetupCost, coffeeTableCost, refreshmentsTableCost, mixersJuicesPackageCost, sodasJuicesAddonCost, mimosaBarTableCost, icePackageCost, dryIcePackageCost, coolerRentalCost, barPackageCost, barPackage);
+
+            displayBottles(bottleCalc);
+
+            displayStaffing(staffing, extraBartenders);
+
+        }
+
+
+
+        function calculateBottles(guests, duration, barPackage) {
+
+            // Each person drinks 1 drink per hour + 1 extra in first hour
+
+            const totalDrinks = guests * (duration + 1);
+
+            
+
+            // Base quantities for 160 guests (from your shopping list)
+
+            const baseGuests = 160;
+
+            const scaleFactor = guests / baseGuests;
+
+            
+
+            let cocktailDrinks = 0;
+
+            let beerDrinks = 0;
+
+            let wineDrinks = 0;
+
+            let nonAlcoholicDrinks = 0;
+
+            
+
+            if (barPackage === 'fullBar') {
+
+                // Drink distribution: 30% cocktails, 30% beer, 30% wine, 10% non-alcoholic
+
+                cocktailDrinks = Math.ceil(totalDrinks * 0.30);
+
+                beerDrinks = Math.ceil(totalDrinks * 0.30);
+
+                wineDrinks = Math.ceil(totalDrinks * 0.30);
+
+                nonAlcoholicDrinks = Math.ceil(totalDrinks * 0.10);
+
+            } else if (barPackage === 'threeCocktails') {
+
+                // Only cocktails and non-alcoholic
+
+                cocktailDrinks = Math.ceil(totalDrinks * 0.85);
+
+                nonAlcoholicDrinks = Math.ceil(totalDrinks * 0.15);
+
+            } else if (barPackage === 'mimosaBar') {
+
+                // Mostly mimosas (champagne-based) and non-alcoholic
+
+                cocktailDrinks = Math.ceil(totalDrinks * 0.80); // Mimosas count as cocktails
+
+                nonAlcoholicDrinks = Math.ceil(totalDrinks * 0.20);
+
+            } else if (barPackage === 'wineAndBeer') {
+
+                // Only wine, beer, and non-alcoholic
+
+                beerDrinks = Math.ceil(totalDrinks * 0.45);
+
+                wineDrinks = Math.ceil(totalDrinks * 0.40);
+
+                nonAlcoholicDrinks = Math.ceil(totalDrinks * 0.15);
+
+            } else if (barPackage === 'nonAlcoholic') {
+
+                // Only non-alcoholic drinks
+
+                nonAlcoholicDrinks = totalDrinks;
+
+            }
+
+            
+
+            // Full shopping list with exact items and prices
+
+            const shoppingList = [
+
+                // Beer
+
+                { category: 'Beer', item: 'Bud Light - Bottles', size: '24PKB - 12oz', baseQty: 2, price: 19.19 },
+
+                { category: 'Beer', item: 'Heineken - Bottles', size: '24PKB - 12oz', baseQty: 2, price: 39.59 },
+
+                { category: 'Beer', item: 'Lagunitas IPA - Bottles', size: '12PKB - 12oz', baseQty: 3, price: 23.99 },
+
+                
+
+                // Wine
+
+                { category: 'Wine', item: 'Kim Crawford Sauvignon Blanc', size: '750ml', baseQty: 12, price: 20.39 },
+
+                { category: 'Wine', item: 'J Vineyards Pinot Gris', size: '750ml', baseQty: 12, price: 28.79 },
+
+                { category: 'Wine', item: 'Byron Santa Barbara Pinot Noir', size: '750ml', baseQty: 7, price: 28.99 },
+
+                { category: 'Wine', item: 'Chateau Ste. Michelle Cabernet', size: '750ml', baseQty: 7, price: 22.99 },
+
+                
+
+                // Spirits
+
+                { category: 'Spirits', item: 'Tito\'s Vodka', size: '1.75L', baseQty: 3, price: 39.99 },
+
+                { category: 'Spirits', item: 'Bombay Sapphire Gin', size: '1.75L', baseQty: 2, price: 40.99 },
+
+                { category: 'Spirits', item: 'Bulleit Whiskey', size: '1.75L', baseQty: 3, price: 57.99 },
+
+                { category: 'Spirits', item: 'Casamigos Tequila Blanco', size: '1.75L', baseQty: 3, price: 132.99 },
+
+                { category: 'Spirits', item: 'Bacardi Superior White Rum', size: '1.75L', baseQty: 2, price: 32.39 },
+
+                { category: 'Spirits', item: 'Cointreau Triple Sec', size: '750ml', baseQty: 2, price: 43.98 },
+
+                { category: 'Spirits', item: 'Martini Dry Vermouth', size: '750ml', baseQty: 1, price: 22.99 },
+
+                { category: 'Spirits', item: 'Martini Sweet Vermouth', size: '750ml', baseQty: 1, price: 23.99 },
+
+                { category: 'Spirits', item: 'Kahlua', size: '750ml', baseQty: 1, price: 24.99 },
+
+                { category: 'Spirits', item: 'Campari', size: '750ml', baseQty: 1, price: 28.99 },
+
+                
+
+                // Mixers & Juices
+
+                { category: 'Mixers', item: 'Ocean Spray Grapefruit Juice', size: '60oz', baseQty: 2, price: 7.79 },
+
+                { category: 'Mixers', item: 'Ocean Spray Orange Juice', size: '59oz', baseQty: 3, price: 7.79 },
+
+                { category: 'Mixers', item: 'Langers Cranberry Juice', size: '64oz', baseQty: 4, price: 7.79 },
+
+                { category: 'Mixers', item: 'Coca Cola', size: '2L', baseQty: 5, price: 4.29 },
+
+                { category: 'Mixers', item: 'Diet Coke', size: '2L', baseQty: 3, price: 4.29 },
+
+                { category: 'Mixers', item: 'Sprite', size: '2L', baseQty: 4, price: 4.29 },
+
+                { category: 'Mixers', item: 'Canada Dry Ginger Ale', size: '2L', baseQty: 5, price: 4.29 },
+
+                { category: 'Mixers', item: 'Canada Dry Soda Water', size: '1L', baseQty: 6, price: 2.49 },
+
+                { category: 'Mixers', item: 'Schweppes Tonic Water', size: '1L', baseQty: 3, price: 2.49 },
+
+                { category: 'Mixers', item: 'Apple Juice', size: '64oz', baseQty: 2, price: 5.99 },
+
+                { category: 'Mixers', item: 'Pineapple Juice', size: '46oz', baseQty: 2, price: 6.49 },
+
+                { category: 'Mixers', item: 'Finest Call Sweet & Sour', size: '1L', baseQty: 3, price: 9.59 },
+
+                { category: 'Mixers', item: 'Rose\'s Grenadine', size: '25oz', baseQty: 1, price: 8.59 },
+
+                { category: 'Mixers', item: 'Simple Syrup', size: '375ml', baseQty: 5, price: 5.99 },
+
+                { category: 'Mixers', item: 'Angostura Bitters', size: '4oz', baseQty: 2, price: 13.69 },
+
+                { category: 'Mixers', item: 'ReaLime Lime Juice', size: '15oz', baseQty: 7, price: 6.46 },
+
+                { category: 'Mixers', item: 'La Paz Margarita Mix', size: '1L', baseQty: 2, price: 14.00 },
+
+                { category: 'Mixers', item: 'Piña Colada Mix', size: '1L', baseQty: 2, price: 6.00 },
+
+                { category: 'Mixers', item: 'Strawberry Flavoring', size: '16oz', baseQty: 1, price: 6.00 },
+
+                { category: 'Mixers', item: 'Peach Flavoring', size: '16oz', baseQty: 1, price: 6.00 },
+
+                { category: 'Mixers', item: 'Bubblegum Flavoring', size: '16oz', baseQty: 1, price: 6.00 },
+
+                { category: 'Mixers', item: 'Bloody Mary Mix', size: '32oz', baseQty: 2, price: 6.00 },
+
+                { category: 'Mixers', item: 'Heavy Cream', size: '32oz', baseQty: 1, price: 4.99 },
+
+                { category: 'Mixers', item: 'Ginger Beer', size: '4pk', baseQty: 3, price: 8.99 },
+
+                
+
+                // Supplies
+
+                { category: 'Supplies', item: 'Arctic Glacier Ice', size: 'lbs', baseQty: 330, price: 0.49 },
+
+                { category: 'Supplies', item: '12oz Plastic Cups', size: '100ct', baseQty: 8, price: 15.99 },
+
+                { category: 'Supplies', item: 'Cocktail Napkins', size: '100ct', baseQty: 6, price: 11.98 },
+
+                { category: 'Supplies', item: 'Drink Skewers', size: '100ct', baseQty: 4, price: 7.99 },
+
+                { category: 'Supplies', item: 'Straws', size: '100ct', baseQty: 4, price: 5.99 },
+
+                { category: 'Supplies', item: 'Orchid Flowers', size: '50 flowers', baseQty: 1, price: 30.00 },
+
+                { category: 'Supplies', item: 'Flower Toothpicks', size: '100ct', baseQty: 1, price: 16.00 },
+
+                { category: 'Supplies', item: 'Black Tapioca Boba Pearls', size: '2.2lbs', baseQty: 1, price: 25.00 },
+
+                { category: 'Supplies', item: 'Any Flavor Popping Boba', size: '1 container', baseQty: 1, price: 21.00 },
+
+                { category: 'Supplies', item: '12oz Paper Coffee Cups', size: '50ct', baseQty: 2, price: 12.99 },
+
+                { category: 'Supplies', item: 'Martini Olives', size: '1 JAR', baseQty: 2, price: 13.49 },
+
+                { category: 'Supplies', item: 'Luxardo Maraschino Cherries', size: '1 JAR', baseQty: 1, price: 36.39 },
+
+                { category: 'Supplies', item: 'Lemons', size: 'pc', baseQty: 6, price: 0.99 },
+
+                { category: 'Supplies', item: 'Oranges', size: 'pc', baseQty: 6, price: 0.99 },
+
+                { category: 'Supplies', item: 'Limes', size: 'pc', baseQty: 40, price: 0.99 },
+
+                { category: 'Supplies', item: 'Crystal Geyser Water', size: '24PK', baseQty: 6, price: 6.49 },
+
+                { category: 'Supplies', item: 'Toothpicks', size: '800ct', baseQty: 1, price: 3.79 },
+
+                { category: 'Supplies', item: 'Fresh Mint', size: 'bunch', baseQty: 3, price: 2.99 },
+
+                { category: 'Supplies', item: 'Eggs', size: 'dozen', baseQty: 1, price: 3.49 },
+
+                { category: 'Supplies', item: 'Salt', size: '26oz', baseQty: 1, price: 1.99 },
+
+                { category: 'Supplies', item: 'Cotton Candy Syrup', size: '16oz', baseQty: 1, price: 5.00 }
+
+            ];
+
+            
+
+            // Get selected cocktails if 3-cocktail package
+
+            let selectedCocktails = [];
+
+            if (barPackage === 'threeCocktails') {
+
+                const cocktailRecipes = {
+
+                    'oldFashioned': { name: 'Old Fashioned', recipe: '2oz bourbon, 1/4oz simple syrup, 2 dashes angostura bitters, splash of water' },
+
+                    'whiskeySour': { name: 'Whiskey Sour', recipe: '2oz bourbon/whiskey, 1/4oz fresh lemon juice, 1/4oz simple syrup, orange peel, maraschino cherry' },
+
+                    'newYorkSour': { name: 'New York Sour', recipe: '2oz bourbon/whiskey, 1oz fresh lemon juice, 1oz simple syrup, 1/2oz fruity red wine, orange peel' },
+
+                    'manhattan': { name: 'Manhattan', recipe: '2oz rye whiskey, 1oz sweet red vermouth, dash Angostura bitters, maraschino cherry, orange peel' },
+
+                    'mintJulep': { name: 'Mint Julep', recipe: '2oz bourbon, 1/2oz simple syrup, 4 fresh spearmint leaves' },
+
+                    'paloma': { name: 'Paloma', recipe: '1 1/2oz fresh grapefruit juice, 2oz tequila, 1/2oz simple syrup, 3/4oz fresh lime juice, 2oz club soda, salt, fruit wedge' },
+
+                    'tequilaSunrise': { name: 'Tequila Sunrise', recipe: '2oz tequila, 4oz fresh orange juice, 1/4oz grenadine syrup, orange wheel, maraschino cherry' },
+
+                    'tequilaSour': { name: 'Tequila Sour', recipe: '1 1/2oz tequila, 3/4oz lemon juice, 1/4oz fresh lime juice, 3/4oz simple syrup, 1 egg white, lime wheel' },
+
+                    'cosmopolitan': { name: 'Cosmopolitan', recipe: '1 1/2oz citrus vodka, 1oz cointreau, 1/2oz fresh lime juice, dash cranberry juice, lime peel' },
+
+                    'moscowMule': { name: 'Moscow Mule', recipe: '1 1/2oz vodka, 1/4oz fresh lime juice, ginger beer, lime wheel, mint sprig' },
+
+                    'blackRussian': { name: 'Black Russian', recipe: '1oz vodka, 2oz kahlua' },
+
+                    'longIslandIcedTea': { name: 'Long Island Iced Tea', recipe: '1/4oz vodka, 1/4oz rum, 1/4oz tequila, 1/4oz gin, triple sec, simple syrup, lemon juice, cola soda, lime peel, mint sprig' },
+
+                    'bloodyMary': { name: 'Bloody Mary', recipe: '1 1/2oz vodka, 4oz Bloody Mary Mix, celery salt rim' },
+
+                    'screwdriver': { name: 'Screwdriver', recipe: '1 1/2oz vodka, 4oz orange juice, orange twist garnish' },
+
+                    'negroni': { name: 'Negroni', recipe: '1oz gin, 1oz Campari, 1oz sweet vermouth, orange twist' },
+
+                    'gimlet': { name: 'Gimlet', recipe: '2 1/2oz gin, 1/2oz fresh lime juice, 1/2oz simple syrup, lime wheel' },
+
+                    'tomCollins': { name: 'Tom Collins', recipe: '1 1/2oz gin, 3/4oz fresh lemon juice, 3/4oz simple syrup, club soda, orange slice, maraschino cherry' },
+
+                    'ramosGinFizz': { name: 'Ramos Gin Fizz', recipe: '2oz gin, 1/2oz heavy cream, 1/2oz fresh lemon juice, 1/2oz fresh lime juice, 3/4oz simple syrup, 3 dashes orange flower water, 1 egg white, club soda, lime wheel' },
+
+                    'whiteLady': { name: 'White Lady', recipe: '2oz gin, 1/2oz orange liqueur, 1/2oz fresh lemon juice, 1 egg white, orange twist' },
+
+                    'ginTonic': { name: 'Gin & Tonic', recipe: '1 1/2oz gin, 1/2oz lemon juice, 1/2oz lime juice, tonic water, lime wedge, rosemary sprig' },
+
+                    'mojito': { name: 'Mojito', recipe: '3 mint leaves, 1/2oz simple syrup, 2oz white rum, 3/4oz fresh lime juice, club soda, mint leaves, lime wedge' },
+
+                    'daiquiri': { name: 'Daiquiri', recipe: '2oz white rum, 1oz fresh lime juice, 1/2oz simple syrup, lime wheel garnish' },
+
+                    'darkNStormy': { name: 'Dark \'N\' Stormy', recipe: '2oz dark rum, 3oz ginger beer, lime wedge' },
+
+                    'pinaColada': { name: 'Piña Colada', recipe: '2oz rum, 6oz piña colada mix' },
+
+                    'maiTai': { name: 'Mai Tai', recipe: '1 1/2oz white rum, 1/2oz dark rum, 1/2oz orange curaçao, 1/2oz orgeat syrup, dash of lime juice, pineapple wedge, maraschino cherry' },
+
+                    'hurricane': { name: 'Hurricane', recipe: '2oz light rum, 2oz dark rum, 1oz fresh lime juice, 1oz orange juice, 1/4 passion fruit puree, 1/4 simple syrup, 1/4 grenadine, orange slice, maraschino cherry' },
+
+                    'french75': { name: 'French 75', recipe: '1/4oz fresh lemon juice, 1/4oz simple syrup, 1oz gin, 3oz champagne, orange twist garnish' },
+
+                    'mimosa': { name: 'Mimosa', recipe: '2 1/2oz champagne, 2 1/2oz orange juice' },
+
+                    'kirRoyale': { name: 'Kir Royale', recipe: '1/4oz Crème de cassis, 4 1/2oz sparkling wine, cherry garnish' }
+
+                };
+
+                
+
+                const checkedCocktails = document.querySelectorAll('.cocktail-choice:checked');
+
+                checkedCocktails.forEach(checkbox => {
+
+                    if (cocktailRecipes[checkbox.value]) {
+
+                        selectedCocktails.push(cocktailRecipes[checkbox.value]);
+
+                    }
+
+                });
+
+            }
+
+            
+
+            // Get selected add-ons to determine what to include
+
+            const champagne = document.getElementById('champagne').checked;
+
+            const premiumSetup = document.getElementById('premiumSetup').checked;
+
+            const coffeeTable = document.getElementById('coffeeTable').checked;
+
+            const refreshmentsTable = document.getElementById('refreshmentsTable').checked;
+
+            const mixersJuicesPackage = document.getElementById('mixersJuicesPackage').checked;
+
+            const sodasJuicesAddon = document.getElementById('sodasJuicesAddon').checked;
+
+            const mimosaBarTable = document.getElementById('mimosaBarTable').checked;
+
+            const icePackage = document.getElementById('icePackage').checked;
+
+            const dryIcePackage = document.getElementById('dryIcePackage').checked;
+
+            
+
+            // Calculate scaled quantities and totals
+
+            let totalCost = 0;
+
+            const scaledList = shoppingList.map(item => {
+
+                let scaledQty = Math.ceil(item.baseQty * scaleFactor);
+
+                
+
+                // Filter items based on selected bar package and add-ons
+
+                let includeItem = false;
+
+                
+
+                // Always include basic supplies
+
+                if (item.category === 'Supplies' && (item.item.includes('Cups') || item.item.includes('Napkins') || item.item.includes('Ice') || item.item.includes('Straws'))) {
+
+                    includeItem = true;
+
+                }
+
+                
+
+                // Bar package filtering
+
+                if (barPackage === 'fullBar') {
+
+                    includeItem = true;
+
+                } else if (barPackage === 'threeCocktails') {
+
+                    if (item.category === 'Spirits' || item.category === 'Mixers' || item.category === 'Supplies') {
+
+                        includeItem = true;
+
+                    }
+
+                } else if (barPackage === 'mimosaBar') {
+
+                    if (item.category === 'Wine' || (item.category === 'Supplies' && !item.item.includes('Cups') && !item.item.includes('Napkins') && !item.item.includes('Straws'))) {
+
+                        includeItem = true;
+
+                    }
+
+                    if (item.item.includes('Orange Juice') || item.item.includes('Champagne') || 
+
+                        item.item.includes('Strawberry') || item.item.includes('Peach') || item.item.includes('Bubblegum')) {
+
+                        includeItem = true;
+
+                    }
+
+                } else if (barPackage === 'wineAndBeer') {
+
+                    if (item.category === 'Beer' || item.category === 'Wine' || item.category === 'Supplies') {
+
+                        includeItem = true;
+
+                    }
+
+                } else if (barPackage === 'nonAlcoholic') {
+
+                    if (item.category === 'Mixers' || item.category === 'Supplies') {
+
+                        includeItem = true;
+
+                    }
+
+                } else if (barPackage === 'bartenderMixersJuices') {
+
+                    if (item.category === 'Mixers' || item.category === 'Supplies') {
+
+                        includeItem = true;
+
+                    }
+
+                } else if (barPackage === 'signatureHouse') {
+
+                    if (item.category === 'Spirits' || item.category === 'Mixers' || item.category === 'Supplies') {
+
+                        includeItem = true;
+
+                    }
+
+                } else if (barPackage === 'thirtyHourBartender') {
+
+                    if (item.category === 'Supplies') {
+
+                        includeItem = true;
+
+                    }
+
+                } else if (barPackage === 'cashBar') {
+
+                    // Cash bar includes everything - bartender provides all items
+
+                    includeItem = true;
+
+                }
+
+                
+
+                // Add-on filtering - these add items regardless of base package
+
+                if (champagne && item.item.toLowerCase().includes('champagne')) includeItem = true;
+
+                if (mixersJuicesPackage && item.category === 'Mixers') includeItem = true;
+
+                if (sodasJuicesAddon && (item.item.includes('Coca Cola') || item.item.includes('Sprite') || item.item.includes('Orange Juice'))) includeItem = true;
+
+                if (icePackage && item.item.includes('Ice')) includeItem = true;
+
+                if (coffeeTable && item.item.includes('Coffee')) includeItem = true;
+
+                if (refreshmentsTable && (item.item.includes('Water') || item.item.includes('Lemonade'))) includeItem = true;
+
+                
+
+                if (!includeItem) {
+
+                    scaledQty = 0;
+
+                }
+
+                
+
+                const itemTotal = scaledQty * item.price;
+
+                totalCost += itemTotal;
+
+                
+
+                return {
+
+                    ...item,
+
+                    quantity: scaledQty,
+
+                    total: itemTotal
+
+                };
+
+            }).filter(item => item.quantity > 0); // Remove items with 0 quantity
+
+            
+
+            // Add services to the list
+
+            const services = [];
+
+            if (champagne) services.push({ item: 'Champagne Service', quantity: 1, price: 150, total: 150, category: 'Services' });
+
+            if (premiumSetup) services.push({ item: 'Premium Bar Setup', quantity: 1, price: 200, total: 200, category: 'Services' });
+
+            if (coffeeTable) services.push({ item: 'Coffee Table Service', quantity: 1, price: 21, total: 21, category: 'Services' });
+
+            if (refreshmentsTable) services.push({ item: 'Water & Lemonade Refreshments', quantity: 1, price: 85, total: 85, category: 'Services' });
+
+            if (mixersJuicesPackage) services.push({ item: 'Mixers & Juices Package', quantity: 1, price: 95, total: 95, category: 'Services' });
+
+            if (sodasJuicesAddon) services.push({ item: 'Sodas & Juices Add-on', quantity: 1, price: 65, total: 65, category: 'Services' });
+
+            if (mimosaBarTable) services.push({ item: 'Mimosa Bar Table', quantity: 1, price: 125, total: 125, category: 'Services' });
+
+            if (icePackage) services.push({ item: 'Ice Package', quantity: 1, price: 75, total: 75, category: 'Services' });
+
+            if (dryIcePackage) services.push({ item: 'Dry Ice Package', quantity: 1, price: 150, total: 150, category: 'Services' });
+
+            if (coolerRentals > 0) services.push({ item: 'Cooler Rentals', quantity: coolerRentals, price: 25, total: coolerRentals * 25, category: 'Services' });
+
+            
+
+            // Add services to total cost
+
+            services.forEach(service => {
+
+                totalCost += service.total;
+
+            });
+
+            
+
+            // Combine items and services
+
+            const finalList = [...scaledList, ...services];
+
+            
+
+            return {
+
+                list: finalList,
+
+                totalCost: totalCost,
+
+                totalDrinks: totalDrinks,
+
+                cocktailDrinks: cocktailDrinks,
+
+                beerDrinks: beerDrinks,
+
+                wineDrinks: wineDrinks,
+
+                nonAlcoholicDrinks: nonAlcoholicDrinks,
+
+                selectedCocktails: selectedCocktails
+
+            };
+
+        }
+
+
+
+        function calculateStaffing(guests, duration) {
+
+            // 1 bartender per 50 guests for first 4 hours, +1 for each additional 2 hours
+
+            let recommendedBartenders = Math.ceil(guests / 50);
+
+            if (duration > 4) {
+
+                recommendedBartenders += Math.ceil((duration - 4) / 2);
+
+            }
+
+            
+
+            return {
+
+                recommended: recommendedBartenders,
+
+                minimum: Math.max(1, Math.ceil(guests / 75))
+
+            };
+
+        }
+
+
+
+        function displayResults(subtotal, tax, total, baseServiceFee, bartenderCost, extraBartenderCost, champagneCost, premiumSetupCost, coffeeTableCost, refreshmentsTableCost, mixersJuicesPackageCost, sodasJuicesAddonCost, mimosaBarTableCost, icePackageCost, dryIcePackageCost, coolerRentalCost, barPackageCost, barPackage) {
+
+            const resultsDiv = document.getElementById('results');
+
+            
+
+            const barPackageNames = {
+
+                'fullBar': 'Full Bar',
+
+                'threeCocktails': '3 Signature Cocktails',
+
+                'mimosaBar': 'Mimosa Bar',
+
+                'wineAndBeer': 'Wine & Beer Package',
+
+                'nonAlcoholic': 'Non-Alcoholic Bar'
+
+            };
+
+            
+
+            resultsDiv.innerHTML = `
+
+                <div class="bg-white border border-gray-200 rounded-lg p-4 space-y-3">
+
+                    <div class="flex justify-between">
+
+                        <span>Base Service Fee:</span>
+
+                        <span class="font-semibold">$${baseServiceFee.toFixed(2)}</span>
+
+                    </div>
+
+                    <div class="flex justify-between">
+
+                        <span>Bartender Service:</span>
+
+                        <span class="font-semibold">$${bartenderCost.toFixed(2)}</span>
+
+                    </div>
+
+                    ${barPackageCost > 0 ? `
+
+                    <div class="flex justify-between">
+
+                        <span>${barPackageNames[barPackage]}:</span>
+
+                        <span class="font-semibold">$${barPackageCost.toFixed(2)}</span>
+
+                    </div>` : ''}
+
+                    ${extraBartenderCost > 0 ? `
+
+                    <div class="flex justify-between">
+
+                        <span>Extra Bartenders:</span>
+
+                        <span class="font-semibold">$${extraBartenderCost.toFixed(2)}</span>
+
+                    </div>` : ''}
+
+                    ${champagneCost > 0 ? `
+
+                    <div class="flex justify-between">
+
+                        <span>Champagne Service:</span>
+
+                        <span class="font-semibold">$${champagneCost.toFixed(2)}</span>
+
+                    </div>` : ''}
+
+                    ${premiumSetupCost > 0 ? `
+
+                    <div class="flex justify-between">
+
+                        <span>Premium Setup:</span>
+
+                        <span class="font-semibold">$${premiumSetupCost.toFixed(2)}</span>
+
+                    </div>` : ''}
+
+                    ${coffeeTableCost > 0 ? `
+
+                    <div class="flex justify-between">
+
+                        <span>Coffee Table:</span>
+
+                        <span class="font-semibold">$${coffeeTableCost.toFixed(2)}</span>
+
+                    </div>` : ''}
+
+                    ${refreshmentsTableCost > 0 ? `
+
+                    <div class="flex justify-between">
+
+                        <span>Water & Lemonade Table:</span>
+
+                        <span class="font-semibold">$${refreshmentsTableCost.toFixed(2)}</span>
+
+                    </div>` : ''}
+
+                    ${mixersJuicesPackageCost > 0 ? `
+
+                    <div class="flex justify-between">
+
+                        <span>Mixers & Juices Package:</span>
+
+                        <span class="font-semibold">$${mixersJuicesPackageCost.toFixed(2)}</span>
+
+                    </div>` : ''}
+
+                    ${sodasJuicesAddonCost > 0 ? `
+
+                    <div class="flex justify-between">
+
+                        <span>Sodas & Juices Add-on:</span>
+
+                        <span class="font-semibold">$${sodasJuicesAddonCost.toFixed(2)}</span>
+
+                    </div>` : ''}
+
+                    ${mimosaBarTableCost > 0 ? `
+
+                    <div class="flex justify-between">
+
+                        <span>Mimosa Bar Table:</span>
+
+                        <span class="font-semibold">$${mimosaBarTableCost.toFixed(2)}</span>
+
+                    </div>` : ''}
+
+                    ${icePackageCost > 0 ? `
+
+                    <div class="flex justify-between">
+
+                        <span>Ice Package:</span>
+
+                        <span class="font-semibold">$${icePackageCost.toFixed(2)}</span>
+
+                    </div>` : ''}
+
+                    ${dryIcePackageCost > 0 ? `
+
+                    <div class="flex justify-between">
+
+                        <span>Dry Ice Package:</span>
+
+                        <span class="font-semibold">$${dryIcePackageCost.toFixed(2)}</span>
+
+                    </div>` : ''}
+
+                    ${coolerRentalCost > 0 ? `
+
+                    <div class="flex justify-between">
+
+                        <span>Cooler Rentals:</span>
+
+                        <span class="font-semibold">$${coolerRentalCost.toFixed(2)}</span>
+
+                    </div>` : ''}
+
+
+
+                    <hr class="border-gray-300">
+
+                    <div class="flex justify-between">
+
+                        <span>Subtotal:</span>
+
+                        <span class="font-semibold">$${subtotal.toFixed(2)}</span>
+
+                    </div>
+
+                    <div class="flex justify-between">
+
+                        <span>Tax (8%):</span>
+
+                        <span class="font-semibold">$${tax.toFixed(2)}</span>
+
+                    </div>
+
+                    <hr class="border-gray-300">
+
+                    <div class="flex justify-between text-lg font-bold text-green-600">
+
+                        <span>Total Cost:</span>
+
+                        <span>$${total.toFixed(2)}</span>
+
+                    </div>
+
+                    <div class="flex justify-between text-sm text-gray-600 mt-2">
+
+                        <span>Cost per person:</span>
+
+                        <span>$${(total / parseInt(document.getElementById('guests').value)).toFixed(2)}</span>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        function displayBottles(bottleData) {
+
+            const bottleDiv = document.getElementById('bottleBreakdown');
+
+            
+
+            if (!bottleData.list) {
+
+                bottleDiv.innerHTML = '<p class="text-gray-600">No items selected</p>';
+
+                return;
+
+            }
+
+            
+
+            let bottleHtml = `
+
+                <div class="mb-4 p-3 bg-blue-50 rounded-lg">
+
+                    <div class="text-sm font-semibold text-blue-800 mb-2">Shopping List for ${document.getElementById('guests').value} guests:</div>
+
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+
+                        <div>🍸 Cocktails: ${bottleData.cocktailDrinks}</div>
+
+                        <div>🍺 Beer: ${bottleData.beerDrinks}</div>
+
+                        <div>🍷 Wine: ${bottleData.wineDrinks}</div>
+
+                        <div>🥤 Non-Alcoholic: ${bottleData.nonAlcoholicDrinks}</div>
+
+                    </div>
+
+                    <div class="mt-2 text-sm font-semibold text-blue-800">Total Drinks: ${bottleData.totalDrinks}</div>
+
+                </div>
+
+                
+
+                <div class="space-y-2 max-h-96 overflow-y-auto">
+
+            `;
+
+            
+
+            // Display only selected items in a simple list
+
+            bottleData.list.forEach(item => {
+
+                bottleHtml += `
+
+                    <div class="flex justify-between items-center text-sm bg-gray-50 p-2 rounded">
+
+                        <div>
+
+                            <div class="font-medium">${item.item}</div>
+
+                            <div class="text-xs text-gray-600">${item.size} - $${item.price.toFixed(2)} each</div>
+
+                        </div>
+
+                        <div class="text-right">
+
+                            <div class="font-semibold">${item.quantity}x</div>
+
+                            <div class="text-xs text-green-600">$${item.total.toFixed(2)}</div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            });
+
+            
+
+            bottleHtml += `
+
+                </div>
+
+                
+
+                ${bottleData.selectedCocktails && bottleData.selectedCocktails.length > 0 ? `
+
+                <div class="mt-4 p-3 bg-purple-50 rounded-lg border-2 border-purple-200">
+
+                    <h4 class="font-semibold text-purple-800 mb-3">🍸 Selected Cocktail Recipes</h4>
+
+                    <div class="space-y-3 max-h-48 overflow-y-auto">
+
+                        ${bottleData.selectedCocktails.map(cocktail => `
+
+                            <div class="bg-white p-2 rounded border">
+
+                                <div class="font-medium text-purple-700">${cocktail.name}</div>
+
+                                <div class="text-xs text-gray-600 mt-1">${cocktail.recipe}</div>
+
+                            </div>
+
+                        `).join('')}
+
+                    </div>
+
+                </div>
+
+                ` : ''}
+
+                
+
+                <div class="mt-4 p-3 bg-green-50 rounded-lg border-2 border-green-200">
+
+                    <div class="text-lg font-bold text-green-800 text-center">
+
+                        Total Shopping Cost: $${bottleData.totalCost.toFixed(2)}
+
+                    </div>
+
+                    <div class="text-sm text-green-700 text-center mt-1">
+
+                        (Plus 9.5% sales tax: $${(bottleData.totalCost * 0.095).toFixed(2)})
+
+                    </div>
+
+                    <div class="text-sm text-green-700 text-center mt-1">
+
+                        Shopping cost per person: $${(bottleData.totalCost / parseInt(document.getElementById('guests').value)).toFixed(2)}
+
+                    </div>
+
+                </div>
+
+            `;
+
+            
+
+            bottleDiv.innerHTML = bottleHtml;
+
+        }
+
+
+
+        function displayStaffing(staffing, extraBartenders) {
+
+            const staffingDiv = document.getElementById('staffingInfo');
+
+            const totalBartenders = 1 + extraBartenders;
+
+            
+
+            staffingDiv.innerHTML = `
+
+                <div class="space-y-2">
+
+                    <div class="flex justify-between">
+
+                        <span>Recommended Bartenders:</span>
+
+                        <span class="font-semibold">${staffing.recommended}</span>
+
+                    </div>
+
+                    <div class="flex justify-between">
+
+                        <span>Minimum Bartenders:</span>
+
+                        <span class="font-semibold">${staffing.minimum}</span>
+
+                    </div>
+
+                    <div class="flex justify-between">
+
+                        <span>Your Selection:</span>
+
+                        <span class="font-semibold ${totalBartenders >= staffing.recommended ? 'text-green-600' : totalBartenders >= staffing.minimum ? 'text-yellow-600' : 'text-red-600'}">${totalBartenders}</span>
+
+                    </div>
+
+                    ${totalBartenders < staffing.minimum ? '<p class="text-red-600 text-xs">⚠️ Consider adding more bartenders for better service</p>' : ''}
+
+                    ${totalBartenders >= staffing.recommended ? '<p class="text-green-600 text-xs">✅ Excellent staffing level!</p>' : ''}
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        // Add event listeners for real-time updates
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Handle custom event type visibility
+
+            document.getElementById('eventType').addEventListener('change', function() {
+
+                const customEventDiv = document.getElementById('customEventType');
+
+                if (this.value === 'custom') {
+
+                    customEventDiv.classList.remove('hidden');
+
+                } else {
+
+                    customEventDiv.classList.add('hidden');
+
+                }
+
+                calculateEvent(); // Auto-update
+
+            });
+
+            
+
+            // Add listeners to all inputs for real-time updates
+
+            const inputs = ['guests', 'duration', 'eventType', 'customEventInput', 'extraBartenders', 'coolerRentals'];
+
+            inputs.forEach(id => {
+
+                const element = document.getElementById(id);
+
+                if (element) {
+
+                    element.addEventListener('change', calculateEvent);
+
+                    element.addEventListener('input', calculateEvent);
+
+                }
+
+            });
+
+            
+
+            // Add listeners to checkboxes
+
+            const checkboxes = ['champagne', 'premiumSetup', 'coffeeTable', 'refreshmentsTable', 'mixersJuicesPackage', 'sodasJuicesAddon', 'mimosaBarTable', 'icePackage', 'dryIcePackage'];
+
+            checkboxes.forEach(id => {
+
+                const element = document.getElementById(id);
+
+                if (element) {
+
+                    element.addEventListener('change', calculateEvent);
+
+                }
+
+            });
+
+            
+
+            // Bar package radio buttons
+
+            document.querySelectorAll('input[name="barPackage"]').forEach(radio => {
+
+                radio.addEventListener('change', function() {
+
+                    // Update package description
+
+                    updatePackageDescription();
+
+                    
+
+                    // Show/hide cocktail selection
+
+                    const cocktailSelection = document.getElementById('cocktailSelection');
+
+                    const mimosaOptions = document.getElementById('mimosaOptions');
+
+                    
+
+                    if (this.value === 'threeCocktails') {
+
+                        cocktailSelection.classList.remove('hidden');
+
+                        mimosaOptions.classList.add('hidden');
+
+                    } else if (this.value === 'mimosaBar') {
+
+                        cocktailSelection.classList.add('hidden');
+
+                        mimosaOptions.classList.remove('hidden');
+
+                    } else {
+
+                        cocktailSelection.classList.add('hidden');
+
+                        mimosaOptions.classList.add('hidden');
+
+                    }
+
+                    
+
+                    calculateEvent(); // Auto-update
+
+                });
+
+            });
+
+            
+
+            // Cocktail choice checkboxes with 3-cocktail limit
+
+            document.querySelectorAll('.cocktail-choice').forEach(checkbox => {
+
+                checkbox.addEventListener('change', function() {
+
+                    const checkedBoxes = document.querySelectorAll('.cocktail-choice:checked');
+
+                    if (checkedBoxes.length > 3) {
+
+                        this.checked = false;
+
+                        alert('You can only select up to 3 cocktails.');
+
+                        return;
+
+                    }
+
+                    calculateEvent(); // Auto-update
+
+                });
+
+            });
+
+            
+
+            // Pricing sheet modal functionality
+
+            document.getElementById('showPricingSheet').addEventListener('click', function() {
+
+                document.getElementById('pricingModal').classList.remove('hidden');
+
+            });
+
+            
+
+            document.getElementById('closePricingModal').addEventListener('click', function() {
+
+                document.getElementById('pricingModal').classList.add('hidden');
+
+            });
+
+            
+
+            // Close modal when clicking outside
+
+            document.getElementById('pricingModal').addEventListener('click', function(e) {
+
+                if (e.target === this) {
+
+                    this.classList.add('hidden');
+
+                }
+
+            });
+
+            
+
+            // Formula page modal functionality
+
+            document.getElementById('showFormulaPage').addEventListener('click', function() {
+
+                document.getElementById('formulaModal').classList.remove('hidden');
+
+            });
+
+            
+
+            document.getElementById('closeFormulaModal').addEventListener('click', function() {
+
+                document.getElementById('formulaModal').classList.add('hidden');
+
+            });
+
+            
+
+            // Close formula modal when clicking outside
+
+            document.getElementById('formulaModal').addEventListener('click', function(e) {
+
+                if (e.target === this) {
+
+                    this.classList.add('hidden');
+
+                }
+
+            });
+
+            
+
+            // Initial calculation to show default shopping list
+
+            updatePackageDescription();
+
+            calculateEvent();
+
+        });
+
+    </script>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96c8b51f25247ba1',t:'MTc1NDc1Nzc1NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href='https://www.free-counters.org/'>free Counters on Free-Counters.org</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=1e0abd8f2407e4f378a8f0fb538b01f57c2ee041'></script>
+
+<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1375047/t/10"></script>
